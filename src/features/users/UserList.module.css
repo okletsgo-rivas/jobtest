@@ -1,0 +1,16 @@
+.UserList {
+  min-width: 375px;
+  margin: 30px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+}
+
+.name {
+  flex-grow: 1;
+}
