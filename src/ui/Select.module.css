@@ -1,0 +1,91 @@
+.Select {
+  appearance: none;
+  background-color: transparent;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.container {
+  position: relative;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+}
+
+.container::after {
+  content: "";
+  margin-right: 0.75rem;
+  width: 0.6rem;
+  height: 0.3rem;
+  background-color: #333;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  justify-self: end;
+}
+
+select,
+.container::after {
+  grid-area: select;
+}
+
+.custom {
+  display: none;  
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+
+@media (hover: hover) {
+  .custom {
+    display: block;
+  }
+  
+  .Select:focus + .custom {
+    display: none;
+  }
+}
+
+.trigger {
+  background: transparent;
+  min-height: 100%;
+}
+
+.menu {background: #fff;
+  border: 1px solid #ccc;
+}
+
+.menu .option {
+  display: flex;
+  font-size: 1.125rem;
+  height: 40px;
+  padding: 0.25rem 0.75rem;
+  align-items: center;
+}
+
+.menu .option:hover {
+  background-color: #f6f6f6;
+}
+
+.menu .option.active {
+  background: #f1f1f1;
+}
+
+.menu .option.active span {
+  flex-grow: 1;
+}
+
+.menu .option.active::after {
+  content: "";
+  width: 8px;
+  height: 17px;
+  margin: -4px 4px 0 0;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

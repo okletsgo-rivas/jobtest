@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { addUser } from './usersSlice';
 import styles from "./AddUser.module.css"
+import Select from '../../ui/Select';
 
 function AddUser() {
   const dispatch = useDispatch();
@@ -26,27 +27,29 @@ function AddUser() {
   return (<div className={styles.AddUser}>
     <form onSubmit={handleSubmit}>
       <div className="input">
-        <label htmlFor="username">User name</label>
-        <input
-          placeholder="Enter user name"
-          name="username" />
+        <label>
+          User name
+          <input
+            placeholder="Enter user name"
+            name="username" />
+        </label>
       </div>
       <div className="input">
-        <label htmlFor="color">Favorite Color</label>
-        <div className="select">
-          <select name="color">
+        <label>
+          Color
+          <Select defaultValue={colorsList[0]} name="color">
             {colorsList.map(color =>
               (<option key={color} value={color}>{color}</option>))}
-          </select>
-        </div>
+          </Select>
+        </label>
       </div>
       <div style={{ marginTop: 40 }}>
         <button type="submit" className="primary" style={{ marginBottom: 20 }}>Submit</button>
         <button type="button" className="link"
           onClick={() => navigate("/users")}>View User List</button>
       </div>
-    </form>
-  </div>)
+    </form >
+  </div >)
 }
 
 export default AddUser;
